@@ -77,7 +77,7 @@ def get_career_recommendation(payload):
         try:
             client = genai.Client(api_key=GEMINI_API_KEY)
             prompt = f"Berikan 3 poin roadmap singkat untuk karir: {recommendations_list[0]['career']}. Skill saat ini: {sanitized_payload['all_skills']}"
-            response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
+            response = client.models.generate_content(model='gemini-flash-latest', contents=prompt)
             ai_roadmap_text = response.text
         except Exception as gemini_err:
             ai_roadmap_text = f"Gagal menghasilkan roadmap: {str(gemini_err)}"
